@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: desafio-jackexperts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: desafio-jackexperts
+  template:
+    metadata:
+      labels:
+        app: desafio-jackexperts
+    spec:
+      containers:
+      - name: nginx
+        image: felipedevopss/desafios-jackexperts:latest  # Insira sua imagem aqui
+        ports:
+        - containerPort: 80
+        securityContext:
+          runAsUser: 101  # Altere para o UID do usuário não-root que você está usando

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jackexperts-service
+  labels:
+    app: jackexperts
+spec:
+  type: NodePort  # Altere para ClusterIP ou LoadBalancer conforme necessário
+  ports:
+    - port: 80              # Porta externa do serviço
+      targetPort: 80        # Porta do contêiner que o serviço irá encaminhar
+      protocol: TCP         # Protocolo utilizado
+      name: http            # Nome da porta
+  selector:
+    app: jackexperts        # Deve corresponder à label do seu Deployment

@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: devopsfelipe/jackexperts-desafio
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: LoadBalancer
+  port: 80
+
+ingress:
+  enabled: true
+  # Adjust the hostname to match your domain
+  hosts:
+    - host: desafio-jackexperts.duckdns.org
+      paths:
+        - /
+  tls: []  # You can configure TLS if needed
+
+resources: {}
