@@ -3,30 +3,28 @@ kind: ConfigMap
 metadata:
   name: my-app-config
 data:
-  index.html: |
-    <!DOCTYPE html>
-    <html lang="pt-br">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Desafio-Jackexperts</title>
-        <style>
-            body { font-family: Arial, sans-serif; text-align: center; }
-            h1 { font-size: 2.5em; }
-            a { margin: 20px; display: inline-block; }
-        </style>
-    </head>
-    <body>
-        <h1>Desafio-Jackexperts</h1>
-        <a href="https://github.com/Felipelimaadev">Meu GitHub</a>
-        <a href="https://hub.docker.com/repository/docker/devopsfelipe/jackexperts-desafio/general">Meu Docker Hub</a>
-        <h2>Apresentação do Projeto</h2>
-        <p>Este projeto é uma aplicação simples feita com Docker e Kubernetes.</p>
-        <h2>Tecnologias Usadas</h2>
-        <p>Docker, Kubernetes, Helm</p>
-        <h2>Contato</h2>
-        <p>Email: jfelipelima07@gmail.com</p>
-        <p>Telefone: 83989010572</p>
-    </body>
-    </html>
+  nginx.conf: |
+    worker_processes 1;
+    events { worker_connections 1024; }
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        sendfile        on;
+        keepalive_timeout  65;
+        server {
+            listen       80;
+            server_name  localhost;
+            
+            # Root directory
+            location / {
+                root   /usr/share/nginx/html;
+                index  index.html index.htm;
+            }
 
+            # Error pages
+            error_page  500 502 503 504  /50x.html;
+            location = /50x.html {
+                root   /usr/share/nginx/html;
+            }
+        }
+    }

@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jackexperts-config
+  labels:
+    app: jackexperts
+data:
+  index.html: |-
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Desafio-Jackexperts</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 20px;
+                background-color: #f4f4f4;
+            }
+            h1 {
+                font-size: 2em;
+                color: #333;
+            }
+            a {
+                display: block;
+                margin: 10px 0;
+                color: #007bff;
+                text-decoration: none;
+            }
+            a:hover {
+                text-decoration: underline;
+            }
+            .contact {
+                margin-top: 20px;
+                font-size: 1.2em;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Desafio-Jackexperts</h1>
+        <a href="https://github.com/Felipelimaadev" target="_blank">Meu GitHub</a>
+        <a href="https://hub.docker.com/repository/docker/devopsfelipe/jackexperts-desafio/general" target="_blank">Meu Docker Hub</a>
+        <a href="URL_DA_APRESENTACAO_DO_PROJETO" target="_blank">Apresentação do Projeto</a>
+        <h2>Tecnologias Usadas</h2>
+        <p>Docker, Kubernetes, Helm</p>
+        <div class="contact">
+            <h2>Contato</h2>
+            <p>Email: jfelipelima07@gmail.com</p>
+            <p>Telefone: 83989010572</p>
+        </div>
+    </body>
+    </html>

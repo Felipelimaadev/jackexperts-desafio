@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: desafio-jackexperts
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: desafio-jackexperts
+  template:
+    metadata:
+      labels:
+        app: desafio-jackexperts
+    spec:
+      initContainers:
+      - name: init-permissions
+        image: busybox
+        command: ['sh', '-c', 'chown -R 1000:1000 /usr/share/nginx/html /tmp']
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+        - name: config-volume
+          mountPath: /tmp
+      containers:
+      - name: nginx
+        image: felipedevopss/desafios-jackexperts:latest
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: html-volume
+          mountPath: /usr/share/nginx/html
+        - name: config-volume
+          mountPath: /etc/nginx/nginx.conf
+          subPath: nginx.conf
+      volumes:
+      - name: html-volume
+        configMap:
+          name: my-app-config
+      - name: config-volume
+        configMap:
+          name: my-app-config

@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: desafio-jackexperts-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  # Para usar com Minikube sem domínio, não precisa de host.
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: desafio-jackexperts   # Substitua pelo nome correto do seu serviço no Kubernetes
+            port:
+              number: 80
+
+  # Se quiser usar com DuckDNS, descomente a linha abaixo e ajuste o domínio
+  # - host: desafio-jackexperts.duckdns.org   # Seu domínio DuckDNS aqui
+  #   http:
+  #     paths:
+  #     - path: /
+  #       pathType: Prefix
+  #       backend:
+  #         service:
+  #           name: desafio-jackexperts
+  #           port:
+  #             number: 80

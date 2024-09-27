@@ -1,14 +1,11 @@
 # Usar a imagem base do Nginx
-FROM nginx:alpine
+FROM nginx:latest
 
-# Instalar bash se necessário (opcional)
-RUN apk add --no-cache bash
+# Copiar arquivos HTML para o diretório padrão do Nginx
+COPY ./html /usr/share/nginx/html
 
-# Copiar o arquivo de configuração do Nginx
-COPY nginx.conf /etc/nginx/nginx.conf
+# Expor a porta 80
+EXPOSE 80
 
-# Copiar o arquivo HTML para o diretório de conteúdo do Nginx
-COPY index.html /usr/share/nginx/html/index.html
-
-# Comando para iniciar o Nginx em primeiro plano
+# Comando padrão para iniciar o Nginx
 CMD ["nginx", "-g", "daemon off;"]
