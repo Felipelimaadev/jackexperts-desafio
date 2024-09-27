@@ -15,21 +15,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker
+      - name: Install Docker
         run: |
           sudo apt-get update
-          sudo apt-get install -y \
-            apt-transport-https \
-            ca-certificates \
-            curl \
-            software-properties-common
-          curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-          add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-          sudo apt-get update
-          sudo apt-get install -y docker-ce
+          sudo apt-get install -y docker.io
 
       - name: Build Docker image
         run: |
-          docker build -t devopsfelipe/jackexperts-desafio:latest .
-          echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u devopsfelipe --password-stdin
-          docker push devopsfelipe/jackexperts-desafio:latest
+          sudo docker build -t devopsfelipe/jackexperts-desafio:latest .
+          echo "${{ secrets.DOCKER_HUB_TOKEN }}" | sudo docker login -u devopsfelipe --password-stdin
+          sudo docker push devopsfelipe/jackexperts-desafio:latest
