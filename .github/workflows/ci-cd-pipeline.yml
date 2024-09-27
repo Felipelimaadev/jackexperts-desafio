@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Mantenha essa linha como está
+      uses: actions/checkout@v3
 
     - name: Build Docker image
       run: |
@@ -34,7 +34,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Mantenha essa linha como está
+      uses: actions/checkout@v3
 
     - name: Set up Kubeconfig
       run: |
