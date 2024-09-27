@@ -1,3 +1,6 @@
+
+http://18.230.123.114/ link para acessar a aplicação HTML
+
 Documentação do Projeto: Desafio Jackexperts
 Introdução
 Este projeto consiste na criação de uma aplicação simples que é executada em um cluster Kubernetes. A aplicação é baseada em uma página HTML customizável e foi construída usando Docker e Helm. O objetivo é demonstrar habilidades em DevOps, incluindo o uso de CI/CD e práticas de containerização.
