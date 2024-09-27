@@ -11,7 +11,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Atualizado para a versão mais recente
+      uses: actions/checkout@v3  # Verifique se está usando a versão mais recente
 
     - name: Build Docker image
       run: |
@@ -34,7 +34,7 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3  # Atualizado para a versão mais recente
+      uses: actions/checkout@v3
 
     - name: Set up Kubeconfig
       run: |
